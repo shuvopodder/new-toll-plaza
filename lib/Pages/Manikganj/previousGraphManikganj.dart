@@ -16,12 +16,11 @@ class _PreviousGraphManikganjState extends State<PreviousGraphManikganj> {
 
   bool animate = true;
 
-
   _createSampleData() {
     List<VehicleModel> data = [];
 
     for(var v in context.read<PreviousReportManikganjDatabase>().previousDataListManikganj){
-      data.add(VehicleModel(day: v.date.substring(0,2), vehicle: (int.parse(v.ctrlR))));
+      data.add(VehicleModel(day: v.date.substring(0,2), vehicle: (int.parse(v.regular))));
     }
     seriesList.add(
       charts.Series(

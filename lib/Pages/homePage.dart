@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isRestricted = false;
 
- /* final dbRef = FirebaseDatabase.instance.reference();
+ /*final dbRef = FirebaseDatabase.instance.reference();
   var currentUser = FirebaseAuth.instance.currentUser.uid.toString();
   var userEmail = FirebaseAuth.instance.currentUser.email;*/
   var userEmail;
@@ -41,7 +41,6 @@ class _HomePageState extends State<HomePage> {
               context.read<ThemeAndColorProvider>().darkTheme ? false : true;
           context.read<ThemeAndColorProvider>().setDarkTheme(isDark);
         });
-
         break;
       case 2:
         FirebaseAuth.instance.signOut();
@@ -53,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       case 3:
         //getadmin();
         //var user = FirebaseAuth.instance.currentUser.email.toString();
-        if(userEmail=="sakif@rocketmail.com"){
+        if(userEmail == "sakif@rocketmail.com"){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>Users()),);
           //MaterialPageRoute(builder: (context)=>LogInPage());
         }else{
@@ -142,6 +141,8 @@ class _HomePageState extends State<HomePage> {
         }
       });*/
       //fetch data from firebase
+
+
       context.read<TodayReportChittagongDatabase>().getShortReport();
       context.read<TodayReportChittagongDatabase>().getReport();
       context.read<PreviousReportChittagongDatabase>().getPreviousReport();
@@ -150,7 +151,7 @@ class _HomePageState extends State<HomePage> {
       context.read<TodayReportManikganjDatabase>().getReport();
       context.read<PreviousReportManikganjDatabase>().getPreviousReport();
       //print(context.read<TodayReportChittagongDatabase>().ctrlR);
-
+      userEmail = FirebaseAuth.instance.currentUser.email;//test
       setState(() {});
     } catch (e) {}
   }
@@ -158,8 +159,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
-     declare();
+
     super.initState();
+   // declare();
     getData();
 
   }

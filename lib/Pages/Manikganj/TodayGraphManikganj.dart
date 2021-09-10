@@ -42,25 +42,29 @@ class _TodayGraphManikganjState extends State<TodayGraphManikganj> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: <Widget>[
-            PieChart(
-              PieChartData(
-                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                    setState(() {
-                      if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                          pieTouchResponse.touchInput is FlPanEnd) {
-                        //touchedIndex = -1;
-                      } else {
-                        touchedIndex = pieTouchResponse.touchedSectionIndex;
-                      }
-                    });
-                  }),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 50,
-                  sections: showingSections()),
+            Container(
+              height: 280,
+              child: PieChart(
+                PieChartData(
+                    pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                      setState(() {
+                        if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                            pieTouchResponse.touchInput is FlPanEnd) {
+                          //touchedIndex = -1;
+                        } else {
+                          touchedIndex = pieTouchResponse.touchedSectionIndex;
+                        }
+                      });
+                    }),
+                    borderData: FlBorderData(
+                      show: false,
+                    ),
+                    sectionsSpace: 0,
+                    centerSpaceRadius: 50,
+                    sections: showingSections()),
+              ),
             ),
+
             ListView.builder(
               shrinkWrap: true,
               primary: false,
@@ -70,7 +74,10 @@ class _TodayGraphManikganjState extends State<TodayGraphManikganj> {
                     color: colorList[index],
                     text: data.vehicleDataList[index].vehicleName,
                     value:
-                    data.vehicleDataList[index].ctrlR.toString(),
+                    //data.vehicleDataList[index].regular.toString(),
+                    (int.parse(data.vehicleDataList[index].regular)
+                      -int.parse(data.vehicleDataList[index].ctrlR)).toString(),
+
                     isSquare: true,
                   );
               },
@@ -85,7 +92,9 @@ class _TodayGraphManikganjState extends State<TodayGraphManikganj> {
     var data = Provider.of<TodayReportManikganjDatabase>(context);
 
     return List.generate(data.vehicleDataList.length, (i) {
-      var value = (double.parse(data.vehicleDataList[i].ctrlR))/double.parse(data.ctrlR )* 100;
+      var value = (double.parse(data.vehicleDataList[i].regular)
+          -double.parse(data.vehicleDataList[i].ctrlR))
+          /(double.parse(data.regular )-double.parse(data.ctrlR ))* 100;
       final isTouched = i == touchedIndex;
       final double fontSize = isTouched ? 25 : 0;
       final double radius = isTouched ? 70 : 50;

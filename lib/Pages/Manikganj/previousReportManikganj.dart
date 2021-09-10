@@ -86,7 +86,7 @@ class _PreviousReportManikganjState extends State<PreviousReportManikganj> {
                           children: [
                             Expanded(
                                 child: Text(
-                              "Regular: \n" + previousReportData.regular,
+                              "Overloaded: \n" + previousReportData.regular,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 16,
@@ -95,6 +95,7 @@ class _PreviousReportManikganjState extends State<PreviousReportManikganj> {
                                   letterSpacing: .8),
                             )),
                             //Expanded(child: Text("|",style: TextStyle(color: themeAndColor.backgroundColor),textAlign: TextAlign.center,)),
+                           /*
                             SizedBox(
                               width: 1.5,
                               height: 30,
@@ -111,7 +112,7 @@ class _PreviousReportManikganjState extends State<PreviousReportManikganj> {
                                   color: Colors.red[700],
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: .8),
-                            )),
+                            )),*/
                           ],
                         ),
                       )

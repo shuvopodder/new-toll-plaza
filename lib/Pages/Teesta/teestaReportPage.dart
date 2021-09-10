@@ -109,8 +109,7 @@ class _TeestaReportPageState extends State<TeestaReportPage> {
                     Expanded(
                       child: Text(
                         "Teesta Bridge Toll Report",
-                        style:
-                            TextStyle(color: providerThemeAndColor.textColor),
+                        style: TextStyle(color: providerThemeAndColor.textColor),
                       ),
                     ),
                     IconButton(

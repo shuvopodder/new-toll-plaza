@@ -42,24 +42,27 @@ class _TodayGraphChittagongState extends State<TodayGraphChittagong> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: <Widget>[
-            PieChart(
-              PieChartData(
-                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                    setState(() {
-                      if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                          pieTouchResponse.touchInput is FlPanEnd) {
-                        //touchedIndex = -1;
-                      } else {
-                        touchedIndex = pieTouchResponse.touchedSectionIndex;
-                      }
-                    });
-                  }),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 50,
-                  sections: showingSections()),
+            Container(
+              height: 280,
+              child: PieChart(
+                PieChartData(
+                    pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                      setState(() {
+                        if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                            pieTouchResponse.touchInput is FlPanEnd) {
+                          //touchedIndex = -1;
+                        } else {
+                          touchedIndex = pieTouchResponse.touchedSectionIndex;
+                        }
+                      });
+                    }),
+                    borderData: FlBorderData(
+                      show: false,
+                    ),
+                    sectionsSpace: 0,
+                    centerSpaceRadius: 50,
+                    sections: showingSections()),
+              ),
             ),
             ListView.builder(
               shrinkWrap: true,

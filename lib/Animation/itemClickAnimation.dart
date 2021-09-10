@@ -56,7 +56,10 @@ class _ItemClickAnimationState extends State<ItemClickAnimation> {
                 if(widget.route != null && FirebaseAuth.instance.currentUser.email=="sakif@rocketmail.com"){
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => widget.route));
-                }else if(widget.route != null && widget.password=="regnum@124"  ){
+                } else if(widget.route != null && FirebaseAuth.instance.currentUser.email=="admin@gmail.com"){
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => widget.route));
+                } else if(widget.route != null && widget.password=="regnum@124"  ){
                   getUser("Mohanonda");
                 }else if(widget.route != null && widget.password=="regnum@456" ){
                   getUser("Teesta");
@@ -185,6 +188,7 @@ class _ItemClickAnimationState extends State<ItemClickAnimation> {
           });
         }
       });}catch(e){
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.redAccent,
@@ -196,7 +200,7 @@ class _ItemClickAnimationState extends State<ItemClickAnimation> {
       );
     }
   }
-/*    final snackBar = SnackBar(
+  /*    final snackBar = SnackBar(
       content: Text(
         loginErrorMessage.toString(),
         style: TextStyle(color: Colors.red),

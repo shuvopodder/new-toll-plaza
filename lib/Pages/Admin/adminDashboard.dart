@@ -54,7 +54,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
       appBar: AppBar(
           backgroundColor: providerColorAndTheme.mainColor,
           title: Text(
-            "Dashboard",
+            "Dashboard", 
             style: TextStyle(color: providerColorAndTheme.textColor),
           ),
           actions: [popupMenuAppBar()]),
@@ -245,12 +245,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
     FilePickerResult result = await FilePicker.platform
         .pickFiles(allowedExtensions: ['xlsx'], type: FileType.custom);
 
-    if (result != null) {
+    if (result != null && _selectedBtnText=='chittagong') {
       path = File(result.files.single.path);
       fileName = result.files.single.name;
       _readExcel();
 
     } else {
+      path = File(result.files.single.path);
+      fileName = result.files.single.name;
+      _readExcel2();
       // User canceled the picker
     }
     if(mounted){
@@ -397,6 +400,41 @@ class _AdminDashboardState extends State<AdminDashboard> {
           else if (row[3] == "Truck 6 Axle") axle6++;
           else if (row[3] == "Truck 7 Axle") axle7++;
           total++;
+        }
+      }
+      print(ctrlRList);
+      regular= total-ctlR;
+    }
+  }
+  void _readExcel2() async {
+    if (path != null) {
+      var excel = Excel.decodeBytes(path.readAsBytesSync());
+      ctlR = 0;
+      total = 0;
+      axle2 = 0;
+      axle3 = 0;
+      axle4 = 0;
+      axle5 = 0;
+      axle6 = 0;
+      axle7 = 0;
+      ctrlRList.clear();
+      for (var table in excel.tables.keys) {
+        for (var row in excel.tables[table].rows) {
+          // print(row.toString());
+          try{
+            if (double.parse((row[9]))<= (row[10]+500)) {
+              ctrlRList.add(Map.fromIterables(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'], row.getRange(0, 18)));
+
+              ctlR++;
+            }
+            if (row[4] == "Truck 2 Axle") axle2++;
+            else if (row[4] == "Truck 3 Axle") axle3++;
+            else if (row[4] == "Truck 4 Axle") axle4++;
+            else if (row[4] == "Truck 5 Axle") axle5++;
+            else if (row[4] == "Truck 6 Axle") axle6++;
+            else if (row[4] == "Truck 7 Axle") axle7++;
+            total++;
+          }catch(e){}
         }
       }
       print(ctrlRList);

@@ -53,17 +53,17 @@ class TodayReportManikganjDatabase with ChangeNotifier {
               axel2: 0, axel3: 0, axel4: 0, axel5: 0, axel6: 0, axel7: 0));
           if(data['ctrlReport'] != null){
             for (var v in data['ctrlReport']) {
-              if (v['d'] == 'Truck 2 Axle') {
+              if (v['e'] == 'Truck 2 Axle') {
                 dataList[0].axel2 = dataList[0].axel2 + 1;
-              } else if (v['d'] == "Truck 3 Axle") {
+              } else if (v['e'] == "Truck 3 Axle") {
                 dataList[0].axel3 = dataList[0].axel3 + 1;
-              } else if (v['d'] == "Truck 4 Axle") {
+              } else if (v['e'] == "Truck 4 Axle") {
                 dataList[0].axel4 = dataList[0].axel4 + 1;
-              } else if (v['d'] == "Truck 5 Axle") {
+              } else if (v['e'] == "Truck 5 Axle") {
                 dataList[0].axel5 = dataList[0].axel5 + 1;
-              } else if (v['d'] == "Truck 6 Axle") {
+              } else if (v['e'] == "Truck 6 Axle") {
                 dataList[0].axel6 = dataList[0].axel6 + 1;
-              } else if (v['d'] == "Truck 7 Axle") {
+              } else if (v['e'] == "Truck 7 Axle") {
                 dataList[0].axel7 = dataList[0].axel7 + 1;
               }
             }
@@ -105,8 +105,6 @@ class TodayReportManikganjDatabase with ChangeNotifier {
         //print(data);
       });
       notifyListeners();
-
-
   }
 
 
