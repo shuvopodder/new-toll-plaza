@@ -150,6 +150,8 @@ class _HomePageState extends State<HomePage> {
       context.read<TodayReportManikganjDatabase>().getShortReport();
       context.read<TodayReportManikganjDatabase>().getReport();
       context.read<PreviousReportManikganjDatabase>().getPreviousReport();
+
+      //context.read<PreviousReportManikganjDatabase>().previousDataListManikganj;
       //print(context.read<TodayReportChittagongDatabase>().ctrlR);
       userEmail = FirebaseAuth.instance.currentUser.email;//test
       setState(() {});

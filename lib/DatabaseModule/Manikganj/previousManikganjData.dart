@@ -10,9 +10,7 @@ class PreviousReportManikganjDatabase extends ChangeNotifier {
 
   getPreviousReport() async {
     try {
-
       previousDataListManikganj.clear();
-
         DatabaseReference reference = FirebaseDatabase.instance.reference();
         reference.child("manikganj").onValue.listen((event)  {
           var data = event.snapshot.value;

@@ -2,10 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import
+'package:intl/intl.dart';
 import 'package:toll_plaza/DatabaseModule/Manikganj/winVehicleReportModule.dart';
-
-
 
 class TodayReportManikganjDatabase with ChangeNotifier {
   var axel2;
@@ -23,26 +22,29 @@ class TodayReportManikganjDatabase with ChangeNotifier {
   TodayReportManikganjDatabase(
       {this.axel2, this.axel3, this.axel4, this.axel5, this.axel6, this.axel7});
 
-  void getShortReport(){
-      DatabaseReference reference = FirebaseDatabase.instance.reference();
-      var today = DateFormat("dd-MM-yyyy").format(DateTime.now());
-      reference.child("manikganj").child(today).onValue.listen((event) async {
-        var data = event.snapshot.value;
-        if (data != null) {
-          if (data['short'] != null) {
-            var todayShortReport = ShortReportModel.fromJson(data['short']);
-            regular = todayShortReport.regular;
-            total = todayShortReport.total;
-            ctrlR = todayShortReport.ctrlR;
-           //print("ctrlR"+ ctrlR.toString());
+  void getShortReport() {
+      try{
+        DatabaseReference reference = FirebaseDatabase.instance.reference();
+        var today = DateFormat("dd-MM-yyyy").format(DateTime.now());
+        reference.child("manikganj").child(today).onValue.listen((event) async {
+          var data = event.snapshot.value;
+          if (data != null) {
+            if (data['short'] != null) {
+              var todayShortReport = ShortReportModel.fromJson(data['short']);
+              regular = todayShortReport.regular;
+              total = todayShortReport.total;
+              ctrlR = todayShortReport.ctrlR;
+              //print("ctrlR"+ ctrlR.toString());
+            }
           }
-        }
-      });
+        });
+      }catch(e){}
       notifyListeners();
   }
 
   void getReport() {
       //print("ok");
+    try{
       DatabaseReference reference = FirebaseDatabase.instance.reference();
       var today = DateFormat("dd-MM-yyyy").format(DateTime.now());
       reference.child("manikganj").child(today).onValue.listen((event) async{
@@ -104,10 +106,9 @@ class TodayReportManikganjDatabase with ChangeNotifier {
         }
         //print(data);
       });
-      notifyListeners();
+    }catch(e){}
+    notifyListeners();
   }
-
-
 
   TodayReportManikganjDatabase.fromJson(Map<dynamic, dynamic> json) {
     axel2 = json['axel2'];

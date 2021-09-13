@@ -21,8 +21,11 @@ class _ManikganjReportPageState extends State<ManikganjReportPage> {
 
   getData() async {
     try{
-      await context.read<TodayReportManikganjDatabase>().getReport();
+
+     // await Future.delayed(Duration(seconds: 5));
       await context.read<TodayReportManikganjDatabase>().getShortReport();
+      await context.read<TodayReportManikganjDatabase>().getReport();
+
       await context.read<PreviousReportManikganjDatabase>().getPreviousReport();
 
       await context.read<PreviousReportManikganjDatabase>().previousDataListManikganj;
@@ -48,12 +51,12 @@ class _ManikganjReportPageState extends State<ManikganjReportPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData();
-    /*Future.delayed(Duration(seconds: 1)).then((value) => {
+    //getData();
+    Future.delayed(Duration(seconds: 1)).then((value) => {
           setState(() {
             isLoading = false;
           })
-        });*/
+        });
   }
 
   @override

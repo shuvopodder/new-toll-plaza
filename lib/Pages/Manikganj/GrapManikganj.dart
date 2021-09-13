@@ -4,9 +4,6 @@ import 'package:toll_plaza/Pages/Manikganj/previousGraphManikganj.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 import 'package:toll_plaza/Pages/Manikganj/TodayGraphManikganj.dart';
 
-
-
-
 class GraphManikganj extends StatefulWidget {
   @override
   _GraphManikganjState createState() => _GraphManikganjState();

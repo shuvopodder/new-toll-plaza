@@ -25,7 +25,6 @@ class _PreviousReportManikganjState extends State<PreviousReportManikganj> {
               }else{
                 return null;
               }
-
             },
           )
         : Center(

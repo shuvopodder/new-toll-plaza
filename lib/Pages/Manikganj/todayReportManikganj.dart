@@ -4,7 +4,7 @@ import 'package:toll_plaza/DatabaseModule/Manikganj/manikganjTodyDataModule.dart
 import 'package:toll_plaza/DesignModule/eachRowDesign.dart';
 import 'package:toll_plaza/DesignModule/vehicleReportViewingDesign.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
-
+ 
 class TodayReportManikganj extends StatefulWidget {
   @override
   _TodayReportManikganjState createState() => _TodayReportManikganjState();
