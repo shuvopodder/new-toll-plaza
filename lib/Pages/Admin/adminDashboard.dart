@@ -33,6 +33,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
   int axle5;
   int axle6;
   int axle7;
+
+
+
   DateTime selectedDate = DateTime.now();
   var ctrlRList = [];
   RadioBtn _selectedBtn = RadioBtn.chittagong;
@@ -391,7 +394,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
            ctrlRList.add(Map.fromIterables(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'], row.getRange(0, 18)));
 
-            ctlR++;
+           ctlR++;
           }
           if (row[3] == "Truck 2 Axle") axle2++;
           else if (row[3] == "Truck 3 Axle") axle3++;

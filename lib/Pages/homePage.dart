@@ -38,15 +38,14 @@ class _HomePageState extends State<HomePage> {
       case 1:
         setState(() {
           bool isDark =
-              context.read<ThemeAndColorProvider>().darkTheme ? false : true;
+          context.read<ThemeAndColorProvider>().darkTheme ? false : true;
           context.read<ThemeAndColorProvider>().setDarkTheme(isDark);
         });
         break;
       case 2:
         FirebaseAuth.instance.signOut();
         Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => LogInPage()),
+            context, MaterialPageRoute(builder: (context) => LogInPage()),
             (route) => false);
         break;
       case 3:
@@ -181,6 +180,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(color: providerColorAndTheme.textColor),
           ),
           actions: [popupMenuAppBar()]),
+
       body: AnimatedContainer(
         duration: Duration(seconds: 1),
         color: providerColorAndTheme.backgroundColor,

@@ -87,8 +87,7 @@ class _VehicleReportViewingDesignState
                                   widget.perVehicleRate + " tk",
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
-                                      color:
-                                          providerThemeAndColor.secondTextColor,
+                                      color: providerThemeAndColor.secondTextColor,
                                       fontSize: 14),
                                 ),
                                 flex: 1,
@@ -101,22 +100,22 @@ class _VehicleReportViewingDesignState
                             children: [
                               Expanded(
                                   child: Text(
-                                widget.secondRowTitle,
-                                style: TextStyle(
-                                    color:
-                                        providerThemeAndColor.secondTextColor,
-                                    fontSize: 16),
-                              )),
+                                    widget.secondRowTitle,
+                                    style: TextStyle(
+                                        color: providerThemeAndColor.secondTextColor,
+                                        fontSize: 16),
+                                  )),
                               Expanded(
                                   child: Text(
-                                widget.totalVehicle != null
-                                    ? widget.totalVehicle
-                                    : widget.regular,
-                                style: TextStyle(
-                                    color: Colors.green, fontSize: 16),
-                              ))
+                                    widget.totalVehicle != null
+                                        ? widget.totalVehicle
+                                        : widget.regular,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 16),
+                                  ))
                             ],
-                          ),
+                    ),
                     widget.triadRowTitle == null
                         ? Container()
                         : Row(
@@ -131,11 +130,10 @@ class _VehicleReportViewingDesignState
                               )),
                               Expanded(
                                   child: Text(
-                                widget.totalPayment != null
-                                    ? widget.totalPayment + " tk"
-                                    : widget.ctrlR,
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 16),
+                                    widget.totalPayment != null
+                                        ? widget.totalPayment + " tk"
+                                        : widget.ctrlR,
+                                    style: TextStyle(color: Colors.red, fontSize: 16),
                               ))
                             ],
                           ),

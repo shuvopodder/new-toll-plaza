@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:toll_plaza/Model/SevenDaysDataModel.dart';
 import 'package:toll_plaza/Model/previousDayReportModel.dart';
 import 'package:toll_plaza/Model/searchModel.dart';
 import 'package:toll_plaza/Model/teestaReportModel.dart';
@@ -13,6 +14,7 @@ class GetData extends ChangeNotifier {
   SearchModel searchModel;
   PreviousDayModel previousDayModel;
   VipPreviousReport vipPreviousReport;
+  SevenDaysDataModel sevenDaysData;
 
   Future<List> get_dateReport() async {
     final response = await http.get(
@@ -59,6 +61,17 @@ class GetData extends ChangeNotifier {
 
     print(data);
     vipPreviousReport = VipPreviousReport.fromJson(data);
+
+    notifyListeners();
+  }
+
+  Future<List> get_sevenDaysData() async {
+    final response = await http
+        .get("http://103.150.65.66/api/api/sevendaysdatavehicledetails.php");
+    var data = json.decode(response.body.toString());
+
+    print(data);
+    sevenDaysData = SevenDaysDataModel.fromJson(data);
 
     notifyListeners();
   }

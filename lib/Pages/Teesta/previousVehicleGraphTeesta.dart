@@ -31,8 +31,7 @@ class _PreviousVehicleGraphTeestaState
       colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
       domainFn: (VehicleModel vehicleModel, _) => vehicleModel.day,
       measureFn: (VehicleModel vehicleModel, _) => vehicleModel.vehicle,
-      labelAccessorFn: (VehicleModel vehicleModel, _) =>
-          vehicleModel.vehicle.toString(),
+      labelAccessorFn: (VehicleModel vehicleModel, _) => vehicleModel.vehicle.toString(),
       id: 'Vehicle',
     ));
   }

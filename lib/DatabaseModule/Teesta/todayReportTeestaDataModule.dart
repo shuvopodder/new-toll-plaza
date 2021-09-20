@@ -275,7 +275,6 @@ class TodayReportTeestaDataModule extends ChangeNotifier {
         totalVehicle = totalVehicle + v.totalVehicle;
       }
       //print(vehicleReportList[0]);
-
     } catch (e) {}
     notifyListeners();
   }

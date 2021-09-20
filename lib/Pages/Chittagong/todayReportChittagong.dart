@@ -5,8 +5,6 @@ import 'package:toll_plaza/DesignModule/eachRowDesign.dart';
 import 'package:toll_plaza/DesignModule/vehicleReportViewingDesign.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
-
-
 class TodayReportChittagong extends StatefulWidget {
   @override
   _TodayReportChittagongState createState() => _TodayReportChittagongState();
@@ -18,10 +16,7 @@ class _TodayReportChittagongState extends State<TodayReportChittagong> {
   void initState()  {
     // TODO: implement initState
     super.initState();
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {

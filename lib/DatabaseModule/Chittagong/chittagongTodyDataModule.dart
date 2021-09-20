@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toll_plaza/DatabaseModule/Chittagong/winVehicleReportModule.dart';
 
-
-
 class TodayReportChittagongDatabase with ChangeNotifier {
   var axel2;
   var axel3;
@@ -109,8 +107,6 @@ class TodayReportChittagongDatabase with ChangeNotifier {
 
   }
 
-
-
   TodayReportChittagongDatabase.fromJson(Map<dynamic, dynamic> json) {
     axel2 = json['axel2'];
     axel3 = json['axel3'];
@@ -130,5 +126,4 @@ class TodayReportChittagongDatabase with ChangeNotifier {
     data['axel7'] = this.axel7;
     return data;
   }
-
 }

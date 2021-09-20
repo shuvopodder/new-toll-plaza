@@ -35,9 +35,10 @@ class _State extends State<TeestaUsers> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(10),
+            color: providerThemeAndColor.secondColor,
             child: Text("Teesta Users List",
               style: TextStyle(
-                  color: providerThemeAndColor.secondColor,
+                  color: providerThemeAndColor.secondTextColor,
                   fontStyle: FontStyle.italic,
                   fontSize: 18),
               textAlign: TextAlign.center,

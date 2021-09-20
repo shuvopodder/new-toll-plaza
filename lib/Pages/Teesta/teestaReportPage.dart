@@ -13,6 +13,7 @@ import 'package:toll_plaza/Pages/Teesta/vipPassTeesta.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
 import 'GraphTeesta.dart';
+import 'PreviousReportTeesta2.dart';
 
 class TeestaReportPage extends StatefulWidget {
   @override
@@ -137,7 +138,7 @@ class _TeestaReportPageState extends State<TeestaReportPage> {
           body: TabBarView(
             children: <Widget>[
               TodayReportTeesta(),
-              PreviousReportTeesta(),
+              PreviousReportTeesta2(),
               GraphTeesta(),
               VipPassTeesta(),
             ],

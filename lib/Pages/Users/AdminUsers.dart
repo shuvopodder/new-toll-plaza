@@ -4,21 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
-class MohanondaUsers extends StatefulWidget {
+class AdminUsers extends StatefulWidget {
   // const ({Key? key}) : super(key: key);
-
   @override
   _State createState() => _State();
 }
 
-class _State extends State<MohanondaUsers> {
+class _State extends State<AdminUsers> {
 
   DatabaseReference ref;
+  bool isLoading = true;
   @override
   void initState() {
+    //final FirebaseDatabase database = FirebaseDatabase.instance;
 
-    checkData();
+    // ref = database.reference().child('Teesta').child("Users");
     // TODO: implement initState
+    checkData();
     super.initState();
   }
   @override
@@ -34,7 +36,7 @@ class _State extends State<MohanondaUsers> {
             width: double.infinity,
             padding: EdgeInsets.all(10),
             color: providerThemeAndColor.secondColor,
-            child: Text("Mohanonda Users List",
+            child: Text("Admin Users List",
               style: TextStyle(
                   color: providerThemeAndColor.secondTextColor,
                   fontStyle: FontStyle.italic,
@@ -54,11 +56,13 @@ class _State extends State<MohanondaUsers> {
                         DataSnapshot snapshot,
                         Animation<double> animation, int index){
                       return new ListTile(
-                        trailing: IconButton(icon: Icon(Icons.delete),iconSize: 40, onPressed: () =>
-                            ref.child(snapshot.key.toString()).remove(),),
-                        title: new Text(snapshot.value.toString(),
-                          //    style: TextStyle(color: Colors.green, fontSize: 20),
-                        ),
+                        trailing: IconButton(icon: Icon(Icons.delete),iconSize: 40,
+                          onPressed: () => ref.child(snapshot.key.toString()).remove(),),
+                        title: snapshot.value.toString()!=null? new Text(snapshot.value.toString()):new Text("Database Error!"),
+
+                        /* new Text(snapshot.value.toString(),
+                        //    style: TextStyle(color: Colors.green, fontSize: 20),
+                          ),*/
                       );
                     })),
           ),
@@ -71,9 +75,15 @@ class _State extends State<MohanondaUsers> {
 
   }
 
-  void checkData() async{
-    final FirebaseDatabase database = FirebaseDatabase.instance;
-    ref = database.reference().child('Mohanonda').child("Users");
+  void checkData() async {
+    try {
+      final FirebaseDatabase database = FirebaseDatabase.instance;
+      ref =
+          database.reference().child('Users').child("Admin");
+      isLoading = false;
+    } catch (e) {
+      isLoading = true;
+    }
   }
 
 }

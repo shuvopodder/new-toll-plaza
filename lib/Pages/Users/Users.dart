@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:toll_plaza/Pages/newUsers.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
+import 'AdminUsers.dart';
 import 'MohanondaUsers.dart';
 import 'TeestaUsers.dart';
 
@@ -27,7 +28,6 @@ class _UsersState extends State<Users> {
     // TODO: implement initState
     checkData();
     super.initState();
-
   }
 
   @override
@@ -45,7 +45,7 @@ class _UsersState extends State<Users> {
       );
     } else {
       return DefaultTabController(
-        length: 2,
+        length:3,
         child: Scaffold(
           backgroundColor: providerThemeAndColor.backgroundColor,
           appBar: AppBar(
@@ -72,6 +72,7 @@ class _UsersState extends State<Users> {
               tabs: [
                 Tab(text: "Teesta"),
                 Tab(text: "Mohanonda"),
+                Tab(text: "Admin"),
                 //  Tab(text: "GRAPH"),
                 // Tab(text: "VIP PASS"),
               ],
@@ -81,6 +82,7 @@ class _UsersState extends State<Users> {
             children: <Widget>[
               TeestaUsers(),
               MohanondaUsers(),
+              AdminUsers(),
               // GraphTeesta(),
               //VipPassTeesta(),
             ],
@@ -161,8 +163,7 @@ class _UsersState extends State<Users> {
   void checkData() async {
     try {
       final FirebaseDatabase database = FirebaseDatabase.instance;
-      DatabaseReference ref =
-          database.reference().child('Teesta').child("Users");
+      DatabaseReference ref = database.reference().child('Teesta').child("Users");
       isLoading = false;
     } catch (e) {
       isLoading = true;
