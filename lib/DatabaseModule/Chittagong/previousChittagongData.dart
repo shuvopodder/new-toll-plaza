@@ -14,7 +14,7 @@ class PreviousReportChittagongDatabase extends ChangeNotifier {
       previousDataListChittagong.clear();
 
         DatabaseReference reference = FirebaseDatabase.instance.reference();
-        reference.child("chittagong").onValue.listen((event)  {
+        reference.child("chittagong2").onValue.listen((event)  {
           var data = event.snapshot.value;
           previousDataListChittagong.clear();
           for(var i=1;i<=7;i++){
@@ -26,6 +26,7 @@ class PreviousReportChittagongDatabase extends ChangeNotifier {
                 total: dailyData.total,
                 regular: dailyData.regular,
                 ctrlR: dailyData.ctrlR,
+                notOverload: dailyData.notOverload,
                 date: weeklyDate));}
           }
         });

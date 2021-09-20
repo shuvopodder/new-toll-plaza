@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toll_plaza/DatabaseModule/Chittagong/winVehicleReportModule.dart';
 import 'package:toll_plaza/DatabaseModule/Chittagong/previousChittagongData.dart';
+import 'package:toll_plaza/DatabaseModule/Chittagong/winVehicleReportModule.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
-
 
 class PreviousReportChittagong extends StatefulWidget {
   @override
@@ -15,22 +14,22 @@ class _PreviousReportChittagongState extends State<PreviousReportChittagong> {
   @override
   Widget build(BuildContext context) {
     final previousReport =
-        Provider.of<PreviousReportChittagongDatabase>(context);
+    Provider.of<PreviousReportChittagongDatabase>(context);
     return previousReport.previousDataListChittagong.isNotEmpty
         ? ListView.builder(
-            itemCount: previousReport.previousDataListChittagong.length,
-            itemBuilder: (context, snapshot) {
-              if(previousReport.previousDataListChittagong[snapshot]!=null){
-                return _widgetBuilder(previousReport.previousDataListChittagong[snapshot]);
-              }else{
-                return null;
-              }
-
-            },
-          )
+      itemCount: previousReport.previousDataListChittagong.length,
+      itemBuilder: (context, snapshot) {
+        if (previousReport.previousDataListChittagong[snapshot] != null) {
+          return _widgetBuilder(
+              previousReport.previousDataListChittagong[snapshot]);
+        } else {
+          return null;
+        }
+      },
+    )
         : Center(
-            child: CircularProgressIndicator(),
-          );
+      child: CircularProgressIndicator(),
+    );
   }
 
   Widget _widgetBuilder(ShortReportModel previousReportData) {
@@ -55,7 +54,7 @@ class _PreviousReportChittagongState extends State<PreviousReportChittagong> {
                 flex: 3,
               ),
               Expanded(
-                flex: 7,
+                flex: 8,
                 child: Card(
                   color: themeAndColor.secondColor,
                   child: Column(
@@ -85,15 +84,20 @@ class _PreviousReportChittagongState extends State<PreviousReportChittagong> {
                         child: Row(
                           children: [
                             Expanded(
+                                flex: 3,
                                 child: Text(
-                              "Regular: \n" + previousReportData.regular,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: themeAndColor.secondTextColor,
-                                  fontWeight: FontWeight.w600,
-                                  letterSpacing: .8),
-                            )),
+                                  "Overload \n" +
+                                      (int.parse(previousReportData.regular) -
+                                          int.parse(previousReportData
+                                              .notOverload))
+                                          .toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: themeAndColor.secondTextColor,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: .8),
+                                )),
                             //Expanded(child: Text("|",style: TextStyle(color: themeAndColor.backgroundColor),textAlign: TextAlign.center,)),
                             SizedBox(
                               width: 1.5,
@@ -103,15 +107,36 @@ class _PreviousReportChittagongState extends State<PreviousReportChittagong> {
                               ),
                             ),
                             Expanded(
+                                flex: 4,
                                 child: Text(
-                              "ctrl+R: \n" + previousReportData.ctrlR,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.red[700],
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: .8),
-                            )),
+                                  "Not Overload \n" +
+                                      previousReportData.notOverload,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.red[700],
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: .8),
+                                )),
+
+                            SizedBox(
+                              width: 1.5,
+                              height: 30,
+                              child: Container(
+                                color: themeAndColor.backgroundColor,
+                              ),
+                            ),
+                            Expanded(
+                                flex: 2,
+                                child: Text(
+                                  "ctrl+R: \n" + previousReportData.ctrlR,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.red[700],
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: .8),
+                                )),
                           ],
                         ),
                       )

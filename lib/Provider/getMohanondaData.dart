@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:toll_plaza/Model/SevenDaysDataModelMohanonda.dart';
 import 'package:toll_plaza/Model/mohanondaReportModel.dart';
 import 'package:toll_plaza/Model/previousDayReportModel.dart';
 import 'package:toll_plaza/Model/searchModel.dart';
@@ -13,6 +14,8 @@ class GetMohanondaData extends ChangeNotifier {
   SearchModel searchModel;
   PreviousDayModel previousDayModel;
   VipPreviousReport vipPreviousReport;
+
+  SevenDaysDataModelMohanonda sevenDaysData;
 
   Future<List> get_dateReport() async {
     final response = await http.get(
@@ -58,6 +61,17 @@ class GetMohanondaData extends ChangeNotifier {
 
     print(data);
     vipPreviousReport = VipPreviousReport.fromJson(data);
+    notifyListeners();
+  }
+
+  Future<List> get_sevenDaysDataMohanonda() async {
+    final response = await http
+        .get("http://103.145.118.20/api/api/sevendaysdatavehicledetails.php");
+    var data = json.decode(response.body.toString());
+
+    print(data);
+    sevenDaysData = SevenDaysDataModelMohanonda.fromJson(data);
+
     notifyListeners();
   }
 }

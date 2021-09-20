@@ -13,6 +13,7 @@ import 'package:toll_plaza/Pages/Mohanonda/vipPassMohanonda.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
 import 'GraphMohanonda.dart';
+import 'PreviousReportMohanonda2.dart';
 
 class MohanondaReportPage extends StatefulWidget {
   @override
@@ -137,7 +138,7 @@ class _MohanondaReportPageState extends State<MohanondaReportPage> {
           body: TabBarView(
             children: <Widget>[
               TodayReportMohanonda(),
-              PreviousReportMohanonda(),
+              PreviousReportMohanonda2(),
               GraphMohanonda(),
               VipPassMohanonda(),
             ],

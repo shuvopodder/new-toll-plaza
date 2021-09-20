@@ -1,22 +1,22 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toll_plaza/DesignModule/sevenDaysRowDesign.dart';
-import 'package:toll_plaza/Provider/getData.dart';
+import 'package:toll_plaza/DesignModule/sevenDaysRowDesignMohanonda.dart';
+import 'package:toll_plaza/Provider/getMohanondaData.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
-class sevenDaysDataTeesta extends StatefulWidget {
+class sevenDaysDataMohanonda extends StatefulWidget {
   @override
-  _sevenDaysDataTeestaState createState() => _sevenDaysDataTeestaState();
+  _sevenDaysDataMohanondaState createState() => _sevenDaysDataMohanondaState();
 }
 
-class _sevenDaysDataTeestaState extends State<sevenDaysDataTeesta> {
+class _sevenDaysDataMohanondaState extends State<sevenDaysDataMohanonda> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   @override
   void initState() {
-    var fetch_data = Provider.of<GetData>(context, listen: false);
-    fetch_data.get_sevenDaysData();
+    var fetch_data = Provider.of<GetMohanondaData>(context, listen: false);
+    fetch_data.get_sevenDaysDataMohanonda();
 
     // TODO: implement initState
     super.initState();
@@ -25,7 +25,7 @@ class _sevenDaysDataTeestaState extends State<sevenDaysDataTeesta> {
   @override
   Widget build(BuildContext context) {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
-    return Consumer<GetData>(builder: (content, data, child) {
+    return Consumer<GetMohanondaData>(builder: (content, data, child) {
       return data.sevenDaysData != null
           ? AnimatedList(
         key: _listKey,
@@ -59,7 +59,7 @@ class _sevenDaysDataTeestaState extends State<sevenDaysDataTeesta> {
             //for animation
             duration: Duration(milliseconds: 500),
             //fow showing each value of list
-            child: sevenDaysrowDesign(
+            child: sevenDaysrowDesignMohanonda(
               date: data.sevenDaysData.data[index].date.toString(),
               total_amount: data
                   .sevenDaysData.data[index].total_amount

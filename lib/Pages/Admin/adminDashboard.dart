@@ -34,12 +34,30 @@ class _AdminDashboardState extends State<AdminDashboard> {
   int axle6;
   int axle7;
 
+  //test
+  int ld_axle2;
+  int ld_axle3;
+  int ld_axle4;
+  int ld_axle5;
+  int ld_axle6;
+  int ld_axle7;
+
+  int ctrl_axle2;
+  int ctrl_axle3;
+  int ctrl_axle4;
+  int ctrl_axle5;
+  int ctrl_axle6;
+  int ctrl_axle7;
+
+  int overld;
+  var overload = [];
+  //
 
 
   DateTime selectedDate = DateTime.now();
   var ctrlRList = [];
   RadioBtn _selectedBtn = RadioBtn.chittagong;
-  var _selectedBtnText = "chittagong";
+  var _selectedBtnText = "chittagong2";//test
 
   TextStyle textStyle = TextStyle(fontSize: 16,fontWeight: FontWeight.bold);
 
@@ -179,7 +197,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             onChanged: (RadioBtn value) {
                               setState(() {
                                 _selectedBtn = value;
-                                _selectedBtnText = "chittagong";
+                                _selectedBtnText = "chittagong2";//test
                               });
                             },
                           ),
@@ -248,7 +266,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     FilePickerResult result = await FilePicker.platform
         .pickFiles(allowedExtensions: ['xlsx'], type: FileType.custom);
 
-    if (result != null && _selectedBtnText=='chittagong') {
+    if (result != null && _selectedBtnText=='chittagong2') { //test chittagong
       path = File(result.files.single.path);
       fileName = result.files.single.name;
       _readExcel();
@@ -373,7 +391,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     }
   }
 
-  void _readExcel() async {
+  /*void _readExcel() async {
     if (path != null) {
       var excel = Excel.decodeBytes(path.readAsBytesSync());
       ctlR = 0;
@@ -408,7 +426,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
       print(ctrlRList);
       regular= total-ctlR;
     }
-  }
+  }*/
   void _readExcel2() async {
     if (path != null) {
       var excel = Excel.decodeBytes(path.readAsBytesSync());
@@ -445,7 +463,213 @@ class _AdminDashboardState extends State<AdminDashboard> {
     }
   }
 
+  void _readExcel() async {
+    if (path != null) {
+      var excel = Excel.decodeBytes(path.readAsBytesSync());
+      ctlR = 0;
+      total = 0;
+      axle2 = 0;
+      axle3 = 0;
+      axle4 = 0;
+      axle5 = 0;
+      axle6 = 0;
+      axle7 = 0;
+
+      ld_axle2 = 0;
+      ld_axle3 = 0;
+      ld_axle4 = 0;
+      ld_axle5 = 0;
+      ld_axle6 = 0;
+      ld_axle7 = 0;
+
+      ctrl_axle2 = 0;
+      ctrl_axle3 = 0;
+      ctrl_axle4 = 0;
+      ctrl_axle5 = 0;
+      ctrl_axle6 = 0;
+      ctrl_axle7 = 0;
+
+      overld = 0;
+      ctrlRList.clear();
+      overload.clear();
+      for (var table in excel.tables.keys) {
+        for (var row in excel.tables[table].rows) {
+          // print(row.toString());
+          if (row[8] == 'N/A') {
+            //print(row);
+            // print();
+            /*ctrlRList.add(Map.fromIterables([
+              'a',
+              'b',
+              'c',
+              'd',
+              'e',
+              'f',
+              'g',
+              'h',
+              'i',
+              'j',
+              'k',
+              'l',
+              'm',
+              'n',
+              'o',
+              'p',
+              'q',
+              'r'
+            ], row.getRange(0, 18)));*/
+
+            if (row[3] == "Truck 2 Axle")
+              ctrl_axle2++;
+            else if (row[3] == "Truck 3 Axle")
+              ctrl_axle3++;
+            else if (row[3] == "Truck 4 Axle")
+              ctrl_axle4++;
+            else if (row[3] == "Truck 5 Axle")
+              ctrl_axle5++;
+            else if (row[3] == "Truck 6 Axle")
+              ctrl_axle6++;
+            else if (row[3] == "Truck 7 Axle") ctrl_axle7++;
+            ctlR++;
+          }
+          try {
+            if (double.parse((row[8])) <= (row[9] + 500)) {
+              overload.add(Map.fromIterables([
+                'a',
+                'b',
+                'c',
+                'd',
+                'e',
+                'f',
+                'g',
+                'h',
+                'i',
+                'j',
+                'k',
+                'l',
+                'm',
+                'n',
+                'o',
+                'p',
+                'q',
+                'r'
+              ], row.getRange(0, 18)));
+
+              if (row[3] == "Truck 2 Axle")
+                ld_axle2++;
+              else if (row[3] == "Truck 3 Axle")
+                ld_axle3++;
+              else if (row[3] == "Truck 4 Axle")
+                ld_axle4++;
+              else if (row[3] == "Truck 5 Axle")
+                ld_axle5++;
+              else if (row[3] == "Truck 6 Axle")
+                ld_axle6++;
+              else if (row[3] == "Truck 7 Axle") ld_axle7++;
+
+              overld++;
+            }
+          } catch (e) {}
+
+          if (row[3] == "Truck 2 Axle") {
+            total++;
+            axle2++;
+          } else if (row[3] == "Truck 3 Axle") {
+            total++;
+            axle3++;
+          } else if (row[3] == "Truck 4 Axle") {
+            total++;
+            axle4++;
+          } else if (row[3] == "Truck 5 Axle") {
+            total++;
+            axle5++;
+          } else if (row[3] == "Truck 6 Axle") {
+            total++;
+            axle6++;
+          } else if (row[3] == "Truck 7 Axle") {
+            total++;
+            axle7++;
+          }
+
+          //total++;
+        }
+      }
+      print(ctrlRList);
+      regular = total - ctlR;
+    }
+  }
+
   _firebaseUpload() {
+    try {
+      final databaseReference = FirebaseDatabase.instance.reference();
+      //print("ok");
+      var date = DateFormat("dd-MM-yyyy").format(selectedDate);
+      databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("RegularReport")
+          .update({
+        "axel2": axle2.toString(),
+        "axel3": axle3.toString(),
+        "axel4": axle4.toString(),
+        "axel5": axle5.toString(),
+        "axel6": axle6.toString(),
+        "axel7": axle7.toString(),
+        "axelT": total.toString(),
+      });
+
+      //test
+      databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("notOverload")
+          .update({
+        "ld_axel2": ld_axle2.toString(),
+        "ld_axel3": ld_axle3.toString(),
+        "ld_axel4": ld_axle4.toString(),
+        "ld_axel5": ld_axle5.toString(),
+        "ld_axel6": ld_axle6.toString(),
+        "ld_axel7": ld_axle7.toString(),
+      });
+      databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("short")
+          .update({
+        "ctrlR": ctlR.toString(),
+        "regular": regular.toString(),
+        "total": total.toString(),
+        "overld": overld.toString()
+      });
+      /*databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("ctrlReport")
+          .set(ctrlRList);*/
+      databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("ctrlReport")
+          .update({
+        "ctrl_axel2": ctrl_axle2.toString(),
+        "ctrl_axel3": ctrl_axle3.toString(),
+        "ctrl_axel4": ctrl_axle4.toString(),
+        "ctrl_axel5": ctrl_axle5.toString(),
+        "ctrl_axel6": ctrl_axle6.toString(),
+        "ctrl_axel7": ctrl_axle7.toString(),
+      });
+      databaseReference
+          .child(_selectedBtnText.toString())
+          .child(date)
+          .child("overload")
+          .set(overload);
+      snackBarMsg("Successfully Update");
+    } catch (e) {
+      snackBarMsg("Data upload to firebase get error");
+    }
+  }
+
+  /*_firebaseUpload() {
     try{
       final databaseReference = FirebaseDatabase.instance.reference();
       //print("ok");
@@ -469,7 +693,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     }catch(e){
       snackBarMsg("Data upload to firebase get error");
     }
-  }
+  }*/
 
   void snackBarMsg(errorMessage) {
     //print("ok");
