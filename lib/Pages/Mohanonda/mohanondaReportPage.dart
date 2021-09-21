@@ -7,7 +7,6 @@ import 'package:toll_plaza/DatabaseModule/Mohanonda/previousVIPReportMohanondaDa
 import 'package:toll_plaza/DatabaseModule/Mohanonda/todayReportMohanondaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Mohanonda/todayVipPassReportMohanondaDataModule.dart';
 import 'package:toll_plaza/Pages/Mohanonda/MohanondaReportSearch.dart';
-import 'package:toll_plaza/Pages/Mohanonda/previousReportMohanonda.dart';
 import 'package:toll_plaza/Pages/Mohanonda/todayReportMohanonda.dart';
 import 'package:toll_plaza/Pages/Mohanonda/vipPassMohanonda.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
@@ -35,8 +34,7 @@ class _MohanondaReportPageState extends State<MohanondaReportPage> {
       await context.read<PreviousVIPReportMohanondaDataModule>().getReport();
       //test
       await context
-          .read<TodayReportMohanondaDataModule>()
-          .getYesterdayVehicleData(
+          .read<TodayReportMohanondaDataModule>().getYesterdayVehicleData(
           "http://103.145.118.20/api/api/yesterday.php");
 
       await context

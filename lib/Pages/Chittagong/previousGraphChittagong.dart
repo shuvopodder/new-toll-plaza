@@ -21,7 +21,7 @@ class _PreviousGraphChittagongState extends State<PreviousGraphChittagong> {
     List<VehicleModel> data = [];
 
     for(var v in context.read<PreviousReportChittagongDatabase>().previousDataListChittagong){
-      data.add(VehicleModel(day: v.date.substring(0,2), vehicle: (int.parse(v.ctrlR))));
+      data.add(VehicleModel(day: v.date.substring(0,2), vehicle: (int.parse(v.total))));
     }
     seriesList.add(
       charts.Series(

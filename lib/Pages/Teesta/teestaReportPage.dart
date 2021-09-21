@@ -6,7 +6,6 @@ import 'package:toll_plaza/DatabaseModule/Teesta/previousReportTeestaDataModule.
 import 'package:toll_plaza/DatabaseModule/Teesta/previousVIPReportTeestaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/todayReportTeestaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/todayVipPassReportTeestaDataModule.dart';
-import 'package:toll_plaza/Pages/Teesta/previousReportTeesta.dart';
 import 'package:toll_plaza/Pages/Teesta/reportSearch.dart';
 import 'package:toll_plaza/Pages/Teesta/todayReportTeesta.dart';
 import 'package:toll_plaza/Pages/Teesta/vipPassTeesta.dart';

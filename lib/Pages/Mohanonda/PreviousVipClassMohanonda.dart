@@ -1,22 +1,23 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toll_plaza/DesignModule/sevenDaysRowDesignMohanonda.dart';
+import 'package:toll_plaza/DesignModule/sevenDaysVipRowDesign.dart';
+import 'package:toll_plaza/Provider/getData.dart';
 import 'package:toll_plaza/Provider/getMohanondaData.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 
-class sevenDaysDataMohanonda extends StatefulWidget {
+class PreviousVipClassMohanonda extends StatefulWidget {
   @override
-  _sevenDaysDataMohanondaState createState() => _sevenDaysDataMohanondaState();
+  _PreviousVipClassMohanondaState createState() => _PreviousVipClassMohanondaState();
 }
 
-class _sevenDaysDataMohanondaState extends State<sevenDaysDataMohanonda> {
+class _PreviousVipClassMohanondaState extends State<PreviousVipClassMohanonda> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   @override
   void initState() {
     var fetch_data = Provider.of<GetMohanondaData>(context, listen: false);
-    fetch_data.get_sevenDaysDataMohanonda();
+    fetch_data.get_sevenDaysVipPass();
 
     // TODO: implement initState
     super.initState();
@@ -26,10 +27,10 @@ class _sevenDaysDataMohanondaState extends State<sevenDaysDataMohanonda> {
   Widget build(BuildContext context) {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     return Consumer<GetMohanondaData>(builder: (content, data, child) {
-      return data.sevenDaysData != null
+      return data.sevenDaysVipPass != null
           ? AnimatedList(
         key: _listKey,
-        initialItemCount: data.sevenDaysData.data.length,
+        initialItemCount: data.sevenDaysVipPass.data.length,
         itemBuilder: (BuildContext context, int index,
             Animation<double> animation) {
           index = index - 1;
@@ -45,7 +46,7 @@ class _sevenDaysDataMohanondaState extends State<sevenDaysDataMohanonda> {
                 padding: EdgeInsets.all(10),
                 color: providerThemeAndColor.secondColor,
                 child: Text(
-                  "Seven Days Data",
+                  "Seven Days VIP Pass Data",
                   style: TextStyle(
                       color: providerThemeAndColor.secondTextColor,
                       fontStyle: FontStyle.italic,
@@ -59,41 +60,42 @@ class _sevenDaysDataMohanondaState extends State<sevenDaysDataMohanonda> {
             //for animation
             duration: Duration(milliseconds: 500),
             //fow showing each value of list
-            child: sevenDaysrowDesignMohanonda(
-              date: data.sevenDaysData.data[index].date.toString(),
+            child: sevenDaysVipRowDesign(
+              date: data.sevenDaysVipPass.data[index].date.toString(),
               total_amount: data
-                  .sevenDaysData.data[index].total_amount
+                  .sevenDaysVipPass.data[index].total_amount
                   .toString(),
               rickshawvan: data
-                  .sevenDaysData.data[index].rickshawvan
+                  .sevenDaysVipPass.data[index].rickshawvan
                   .toString(),
-              motorcycle: data.sevenDaysData.data[index].motorcycle
+              motorcycle: data.sevenDaysVipPass.data[index].motorcycle
                   .toString(),
               threefourwheeler: data
-                  .sevenDaysData.data[index].threefourwheeler
+                  .sevenDaysVipPass.data[index].threefourwheeler
                   .toString(),
-              sedancar: data.sevenDaysData.data[index].sedancar
+              sedancar: data.sevenDaysVipPass.data[index].sedancar
                   .toString(),
               four_wheeler: data
-                  .sevenDaysData.data[index].four_wheeler
+                  .sevenDaysVipPass.data[index].four_wheeler
                   .toString(),
-              microbus: data.sevenDaysData.data[index].microbus
+              microbus: data.sevenDaysVipPass.data[index].microbus
                   .toString(),
-              minibus: data.sevenDaysData.data[index].minibus.toString(),
+              minibus:
+              data.sevenDaysVipPass.data[index].minibus.toString(),
               agrouse:
-              data.sevenDaysData.data[index].agrouse.toString(),
-              minitruck: data.sevenDaysData.data[index].minitruck
+              data.sevenDaysVipPass.data[index].agrouse.toString(),
+              minitruck: data.sevenDaysVipPass.data[index].minitruck
                   .toString(),
               bigbus:
-              data.sevenDaysData.data[index].bigbus.toString(),
+              data.sevenDaysVipPass.data[index].bigbus.toString(),
               medium_truck: data
-                  .sevenDaysData.data[index].medium_truck
+                  .sevenDaysVipPass.data[index].medium_truck
                   .toString(),
               heavy_truck: data
-                  .sevenDaysData.data[index].heavy_truck
+                  .sevenDaysVipPass.data[index].heavy_truck
                   .toString(),
               trailer_long: data
-                  .sevenDaysData.data[index].trailer_long
+                  .sevenDaysVipPass.data[index].trailer_long
                   .toString(),
               firstColumnFontColor:
               providerThemeAndColor.secondTextColor,

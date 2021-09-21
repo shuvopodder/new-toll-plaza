@@ -15,7 +15,7 @@ class GetMohanondaData extends ChangeNotifier {
   PreviousDayModel previousDayModel;
   VipPreviousReport vipPreviousReport;
 
-  SevenDaysDataModelMohanonda sevenDaysData;
+  SevenDaysDataModelMohanonda sevenDaysData,sevenDaysVipPass;
 
   Future<List> get_dateReport() async {
     final response = await http.get(
@@ -71,6 +71,17 @@ class GetMohanondaData extends ChangeNotifier {
 
     print(data);
     sevenDaysData = SevenDaysDataModelMohanonda.fromJson(data);
+
+    notifyListeners();
+  }
+
+  Future<List> get_sevenDaysVipPass() async {
+    final response = await http
+        .get("http://103.145.118.20/api/api/sevendaysdatavehicledetailsvippass.php");
+    var data = json.decode(response.body.toString());
+
+    print(data);
+    sevenDaysVipPass = SevenDaysDataModelMohanonda.fromJson(data);
 
     notifyListeners();
   }

@@ -641,23 +641,30 @@ class _AdminDashboardState extends State<AdminDashboard> {
         "total": total.toString(),
         "overld": overld.toString()
       });
-      /*databaseReference
-          .child(_selectedBtnText.toString())
-          .child(date)
-          .child("ctrlReport")
-          .set(ctrlRList);*/
-      databaseReference
-          .child(_selectedBtnText.toString())
-          .child(date)
-          .child("ctrlReport")
-          .update({
-        "ctrl_axel2": ctrl_axle2.toString(),
-        "ctrl_axel3": ctrl_axle3.toString(),
-        "ctrl_axel4": ctrl_axle4.toString(),
-        "ctrl_axel5": ctrl_axle5.toString(),
-        "ctrl_axel6": ctrl_axle6.toString(),
-        "ctrl_axel7": ctrl_axle7.toString(),
-      });
+      if(_selectedBtnText=="chittagong2"){
+        //chittagong
+        databaseReference
+            .child(_selectedBtnText.toString())
+            .child(date)
+            .child("ctrlReport")
+            .update({
+          "ctrl_axel2": ctrl_axle2.toString(),
+          "ctrl_axel3": ctrl_axle3.toString(),
+          "ctrl_axel4": ctrl_axle4.toString(),
+          "ctrl_axel5": ctrl_axle5.toString(),
+          "ctrl_axel6": ctrl_axle6.toString(),
+          "ctrl_axel7": ctrl_axle7.toString(),
+        });
+      }else{
+        //manikganj
+        databaseReference
+            .child(_selectedBtnText.toString())
+            .child(date)
+            .child("ctrlReport")
+            .set(ctrlRList);
+      }
+
+
       databaseReference
           .child(_selectedBtnText.toString())
           .child(date)

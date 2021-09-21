@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toll_plaza/Pages/Charsindur/todayVipPassCharsindur.dart';
 import 'package:toll_plaza/Pages/Teesta/previousVipPassTeesta.dart';
 import 'package:toll_plaza/Pages/Teesta/todayVipPassTeesta.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
+
+import 'PreviousVipClassTeesta.dart';
 
 class VipPassTeesta extends StatefulWidget {
   @override
@@ -13,13 +14,16 @@ class VipPassTeesta extends StatefulWidget {
 class _VipPassTeestaState extends State<VipPassTeesta> {
   bool _todayButtonSelected;
   bool _previousButtonSelected;
+  bool _previousVIPSelected;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _todayButtonSelected = true;
+
     _previousButtonSelected = false;
+    _previousVIPSelected = false;
   }
 
   @override
@@ -37,6 +41,7 @@ class _VipPassTeestaState extends State<VipPassTeesta> {
                 setState(() {
                   _todayButtonSelected = true;
                   _previousButtonSelected = false;
+                  _previousVIPSelected = false;
                 });
               },
               child: Text("Today"),
@@ -59,6 +64,7 @@ class _VipPassTeestaState extends State<VipPassTeesta> {
                 setState(() {
                   _todayButtonSelected = false;
                   _previousButtonSelected = true;
+                  _previousVIPSelected = false;
                 });
               },
               child: Text("Previous"),
@@ -73,12 +79,38 @@ class _VipPassTeestaState extends State<VipPassTeesta> {
                   : providerThemeAndColor.secondColor,
               animationDuration: Duration(milliseconds: 500),
             ),
+//vehicle class
+            SizedBox(
+              width: 10,
+            ),
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  _todayButtonSelected = false;
+                  _previousButtonSelected = false;
+                  _previousVIPSelected = true;
+                });
+              },
+              child: Text("Vehicle Class"),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              elevation: 10,
+              textColor: providerThemeAndColor.textColor,
+              color: _previousVIPSelected
+                  ? providerThemeAndColor.mainColor
+                  : providerThemeAndColor.secondColor,
+              animationDuration: Duration(milliseconds: 500),
+            ),
           ],
         ),
         Expanded(
           child: _todayButtonSelected
               ? TodayVipPassTeesta()
-              : PreviousVipPassTeesta(),
+              : _previousVIPSelected
+              ? PreviousVipClassTeesta()
+              :PreviousVipPassTeesta(),
         )
       ],
     );
