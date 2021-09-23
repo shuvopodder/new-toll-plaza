@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toll_plaza/DesignModule/sevenDaysVipRowDesign.dart';
-import 'package:toll_plaza/Provider/getData.dart';
 import 'package:toll_plaza/Provider/getMohanondaData.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 

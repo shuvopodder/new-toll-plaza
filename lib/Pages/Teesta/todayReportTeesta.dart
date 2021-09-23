@@ -27,7 +27,6 @@ class _TodayReportTeestaState extends State<TodayReportTeesta> {
               padding: EdgeInsets.all(10),
               color: providerThemeAndColor.secondColor,
               child: Text(
-
                 "Running Fund: " + vehicleDataList.total_amount.toString() + " tk",
                 //"Running Fund: " + vehicleDataList.totalRevenue.toString() + " tk",
                 style: TextStyle(

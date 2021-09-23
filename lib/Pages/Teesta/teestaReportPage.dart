@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/previousReportTeestaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/previousVIPReportTeestaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/todayReportTeestaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Teesta/todayVipPassReportTeestaDataModule.dart';
+import 'package:toll_plaza/DesignModule/loading.dart';
 import 'package:toll_plaza/Pages/Teesta/reportSearch.dart';
 import 'package:toll_plaza/Pages/Teesta/todayReportTeesta.dart';
 import 'package:toll_plaza/Pages/Teesta/vipPassTeesta.dart';
@@ -88,9 +88,12 @@ class _TeestaReportPageState extends State<TeestaReportPage> {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     if (isLoading) {
       return Container(
-        color: providerThemeAndColor.backgroundColor,
+        /*color: providerThemeAndColor.backgroundColor,
         child: Center(
-          child: Lottie.asset('assets/json/loading.json'),
+          child: Lottie.asset('assets/json/loading.json'),*/
+        color: Colors.white,
+        child: Center(
+          child:ColorLoader(),
         ),
       );
     } else {

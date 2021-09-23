@@ -23,7 +23,7 @@ class PreviousReportTeestaDataModule extends ChangeNotifier {
 
   getData2() async {
     try{
-    var response =await http.get("http://103.150.65.66/api/api/previousdays.php");
+    var response = await http.get("http://103.150.65.66/api/api/previousdays.php");
 
     var jsonData = json.decode(response.body)["data"] as List;//['data'] as List;
     dataList2.clear();
@@ -51,7 +51,7 @@ class PreviousReportTeestaDataModule extends ChangeNotifier {
         for (var i = 1; i <= 7; i++) {
           var weeklyDate = DateFormat("dd-MM-yyyy")
               .format(DateTime.now().subtract(Duration(days: i)));
-        //  print("test2 "+ data.toString() );
+          //  print("test2 "+ data.toString() );
           if (data[weeklyDate] != null)
             dataList
                 .add(PreviousReportTeestaDataModule.fromJson(data[weeklyDate]));

@@ -85,5 +85,14 @@ class _State extends State<TeestaUsers> {
         isLoading = true;
       }
     }
+/*
+deleteUser(DatabaseReference ref,String st ) {
+  ref.child(st).remove();
 
+   final CollectionReference userCollection = Firestore.instance.collection('Users');
+   userCollection.document(st).delete();
+  final CollectionReference userCollection2 = FirebaseAuth.instance
+
+}
+*/
 }

@@ -8,6 +8,8 @@ import 'package:toll_plaza/Pages/loginPage.dart';
 import 'package:toll_plaza/ThemeAndColors/themeAndColors.dart';
 import 'package:provider/provider.dart';
 
+import 'DesignModule/loading.dart';
+
 class CheckLogIn extends StatefulWidget {
   @override
   _CheckLogInState createState() => _CheckLogInState();
@@ -25,9 +27,13 @@ class _CheckLogInState extends State<CheckLogIn> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: context.watch<ThemeAndColorProvider>().backgroundColor,
+      /*backgroundColor: context.watch<ThemeAndColorProvider>().backgroundColor,
       body: Center(
         child: Lottie.asset('assets/json/loading.json'),
+      ),*/
+      backgroundColor: Colors.white,
+      body: Center(
+        child:ColorLoader(),
       ),
     );
   }

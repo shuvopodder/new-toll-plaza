@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:toll_plaza/DatabaseModule/Chittagong/chittagongTodyDataModule.dart';
+import 'package:toll_plaza/DatabaseModule/Chittagong/previousChittagongData.dart';
+import 'package:toll_plaza/DesignModule/loading.dart';
 import 'package:toll_plaza/Pages/Chittagong/GraphChittagong.dart';
 import 'package:toll_plaza/Pages/Chittagong/previousReportChittagong.dart';
 import 'package:toll_plaza/Pages/Chittagong/todayReportChittagong.dart';
@@ -13,11 +16,22 @@ class ChittagongReportPage extends StatefulWidget {
 
 class _ChittagongReportPageState extends State<ChittagongReportPage> {
   bool isLoading = true;
+  getData() async {
+    try {
+      await context.read<TodayReportChittagongDatabase>().getShortReport();
+      await context.read<TodayReportChittagongDatabase>().getReport();
+      await context.read<PreviousReportChittagongDatabase>().getPreviousReport();
 
+      //print(context.read<TodayReportCharsindurDataModule>().totalYesterdayVehicle.toString());
+      setState(() {
+        isLoading = false;
+      });
+    } catch (e) {}
+  }
   @override
   void initState() {
     // TODO: implement initState
-
+    getData();//test
     super.initState();
     Future.delayed(Duration(seconds: 1)).then((value) => {
           setState(() {
@@ -31,23 +45,24 @@ class _ChittagongReportPageState extends State<ChittagongReportPage> {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     return isLoading
         ? Container(
-            color: providerThemeAndColor.backgroundColor,
+      /*color: providerThemeAndColor.backgroundColor,
             child: Center(
               child: Lottie.asset('assets/json/loading.json'),
-            ),
-          )
+            ),*/
+      color: Colors.white,
+      child: Center(
+        child:ColorLoader(),
+      ),
+    )
         : DefaultTabController(
             length: 3,
             child: Scaffold(
               backgroundColor: providerThemeAndColor.backgroundColor,
               appBar: AppBar(
                 actions: [],
-                iconTheme:
-                    IconThemeData(color: providerThemeAndColor.iconColor),
+                iconTheme: IconThemeData(color: providerThemeAndColor.iconColor),
                 backgroundColor: providerThemeAndColor.mainColor,
-                title: Text(
-                  "Chittagong Report",
-                  style: TextStyle(color: providerThemeAndColor.textColor),
+                title: Text("Chittagong Report", style: TextStyle(color: providerThemeAndColor.textColor),
                 ),
                 bottom: TabBar(
                   labelStyle: TextStyle(color: providerThemeAndColor.textColor),

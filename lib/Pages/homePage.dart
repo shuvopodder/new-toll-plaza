@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
       case 3:
         //getadmin();
         //var user = FirebaseAuth.instance.currentUser.email.toString();
-        if(userEmail == "sakif@rocketmail.com"){
+        if(userEmail == "admin@gmail.com"){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>Users()),);
           //MaterialPageRoute(builder: (context)=>LogInPage());
         }else{

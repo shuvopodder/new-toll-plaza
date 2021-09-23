@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:toll_plaza/DatabaseModule/Manikganj/manikganjTodyDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Manikganj/previousManikganjData.dart';
+import 'package:toll_plaza/DesignModule/loading.dart';
 import 'package:toll_plaza/Pages/Manikganj/GrapManikganj.dart';
 import 'package:toll_plaza/Pages/Manikganj/previousReportManikganj.dart';
 import 'package:toll_plaza/Pages/Manikganj/todayReportManikganj.dart';
@@ -68,9 +69,13 @@ class _ManikganjReportPageState extends State<ManikganjReportPage> {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     if(isLoading){
       return Container(
-        color: providerThemeAndColor.backgroundColor,
+        /*color: providerThemeAndColor.backgroundColor,
         child: Center(
           child: Lottie.asset('assets/json/loading.json'),
+        ),*/
+        color: Colors.white,
+        child: Center(
+          child:ColorLoader(),
         ),
       );
     }else{

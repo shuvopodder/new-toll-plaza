@@ -6,6 +6,7 @@ import 'package:toll_plaza/DatabaseModule/Mohanonda/previousReportMohanondaDataM
 import 'package:toll_plaza/DatabaseModule/Mohanonda/previousVIPReportMohanondaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Mohanonda/todayReportMohanondaDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Mohanonda/todayVipPassReportMohanondaDataModule.dart';
+import 'package:toll_plaza/DesignModule/loading.dart';
 import 'package:toll_plaza/Pages/Mohanonda/MohanondaReportSearch.dart';
 import 'package:toll_plaza/Pages/Mohanonda/todayReportMohanonda.dart';
 import 'package:toll_plaza/Pages/Mohanonda/vipPassMohanonda.dart';
@@ -86,9 +87,13 @@ class _MohanondaReportPageState extends State<MohanondaReportPage> {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     if (isLoading) {
       return Container(
-        color: providerThemeAndColor.backgroundColor,
+        /*color: providerThemeAndColor.backgroundColor,
         child: Center(
           child: Lottie.asset('assets/json/loading.json'),
+        ),*/
+        color: Colors.white,
+        child: Center(
+          child:ColorLoader(),
         ),
       );
     } else {
