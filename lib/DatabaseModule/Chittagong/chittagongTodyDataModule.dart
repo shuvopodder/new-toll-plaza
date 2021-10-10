@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toll_plaza/DatabaseModule/Chittagong/winVehicleReportModule.dart';
 
-class TodayReportChittagongDatabase with ChangeNotifier {
+class TodayReportChittagongDatabase extends ChangeNotifier {
   var axel2;
   var axel3;
   var axel4;
@@ -50,7 +50,6 @@ class TodayReportChittagongDatabase with ChangeNotifier {
   }
 
   void getReport() {
-    //print("ok");
     DatabaseReference reference = FirebaseDatabase.instance.reference();
     var today = DateFormat("dd-MM-yyyy").format(DateTime.now());
     reference.child("chittagong2").child(today).onValue.listen((event) async {
@@ -59,7 +58,6 @@ class TodayReportChittagongDatabase with ChangeNotifier {
         dataList.clear();
         dataList.add(TodayReportChittagongDatabase(
             axel2: 0, axel3: 0, axel4: 0, axel5: 0, axel6: 0, axel7: 0));
-        //test
         if (data['ctrlReport'] != null) {
           var todayCtrlReport = CtrlReportModel.fromJson(data['ctrlReport']);
 
@@ -69,32 +67,8 @@ class TodayReportChittagongDatabase with ChangeNotifier {
           dataList[0].axel5 = int.parse(todayCtrlReport.ctrl5);
           dataList[0].axel6 = int.parse(todayCtrlReport.ctrl6);
           dataList[0].axel7 = int.parse(todayCtrlReport.ctrl7);
-          /* dataList[0].axel2 = (todayCtrlReport.ctrl2);
-          dataList[0].axel3 = (todayCtrlReport.ctrl3);
-          dataList[0].axel4 = (todayCtrlReport.ctrl4);
-          dataList[0].axel5 = (todayCtrlReport.ctrl5);
-          dataList[0].axel6 = (todayCtrlReport.ctrl6);
-          dataList[0].axel7 = (todayCtrlReport.ctrl7);*/
           print("ctrlR" + ctrlR.toString());
         }
-        /*
-        if (data['ctrlReport'] != null) {
-          for (var v in data['ctrlReport']) {
-            if (v['d'] == 'Truck 2 Axle') {
-              dataList[0].axel2 = dataList[0].axel2 + 1;
-            } else if (v['d'] == "Truck 3 Axle") {
-              dataList[0].axel3 = dataList[0].axel3 + 1;
-            } else if (v['d'] == "Truck 4 Axle") {
-              dataList[0].axel4 = dataList[0].axel4 + 1;
-            } else if (v['d'] == "Truck 5 Axle") {
-              dataList[0].axel5 = dataList[0].axel5 + 1;
-            } else if (v['d'] == "Truck 6 Axle") {
-              dataList[0].axel6 = dataList[0].axel6 + 1;
-            } else if (v['d'] == "Truck 7 Axle") {
-              dataList[0].axel7 = dataList[0].axel7 + 1;
-            }
-          }
-        }*/
 
         vehicleDataList.clear();
         var vehicleData =
@@ -139,7 +113,6 @@ class TodayReportChittagongDatabase with ChangeNotifier {
             ctrlR: dataList[0].axel7.toString(),
             image: "assets/images/trailer_long.png"));
       }
-      //print(data);
     });
     notifyListeners();
   }

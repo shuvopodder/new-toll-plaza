@@ -68,6 +68,7 @@ class TodayReportTeestaDataModule extends ChangeNotifier {
               mediumTruck: 0,
               heavyTruck: 0,
               trailerLong: 0));
+
       dataList[0].rickshawVan = data[0]['Rickshaw_Van'] ;
       dataList[0].motorCycle =  data[0]['MotorCycle'];
       dataList[0].threeFourWheeler = data[0]['three_four_Wheeler'] ;
@@ -191,8 +192,7 @@ class TodayReportTeestaDataModule extends ChangeNotifier {
       totalYesterdayRevenue = 0;
       totalYesterdayVehicle = 0;
       for (var v in yesterdayVehicleReportList) {
-        totalYesterdayRevenue =
-            totalYesterdayRevenue + v.totalVehicle * v.perVehicleRate;
+        totalYesterdayRevenue = totalYesterdayRevenue + v.totalVehicle * v.perVehicleRate;
         totalYesterdayVehicle = totalYesterdayVehicle + v.totalVehicle;
       }
     } catch (e) {}

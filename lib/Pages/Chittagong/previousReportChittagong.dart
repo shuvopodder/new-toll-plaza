@@ -27,8 +27,7 @@ class _PreviousReportChittagongState extends State<PreviousReportChittagong> {
         }
       },
     )
-        : Center(
-      child: CircularProgressIndicator(),
+        : Center(child: CircularProgressIndicator(),
     );
   }
 

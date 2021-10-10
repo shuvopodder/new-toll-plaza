@@ -48,17 +48,20 @@ class _State extends State<TeestaUsers> {
             height: 5,
           ),
           Expanded(
-              child: Flexible(
-                  child: new FirebaseAnimatedList(
-                      shrinkWrap: true,
-                      query: ref,
-                      itemBuilder:(BuildContext context,
-                          DataSnapshot snapshot,
-                          Animation<double> animation, int index){
-                        return new ListTile(
-                          trailing: IconButton(icon: Icon(Icons.delete),iconSize: 40,
-                            onPressed: () => ref.child(snapshot.key.toString()).remove(),),
-                          title: snapshot.value.toString()!=null? new Text(snapshot.value.toString()):new Text("Database Error!"),
+            child: Flexible(
+                child: new FirebaseAnimatedList(
+                    shrinkWrap: true,
+                    query: ref,
+                    itemBuilder:(BuildContext context,
+                        DataSnapshot snapshot,
+                        Animation<double> animation, int index){
+
+                      return new ListTile(
+                        trailing: IconButton(icon: Icon(Icons.delete),iconSize: 40,
+                          onPressed: () => ref.child(snapshot.key.toString()).remove(),),
+                        title: snapshot.value.toString()!=null?
+                        new Text(snapshot.value.toString())
+                            :new Text("Database Error!"),
 
                          /* new Text(snapshot.value.toString(),
                         //    style: TextStyle(color: Colors.green, fontSize: 20),

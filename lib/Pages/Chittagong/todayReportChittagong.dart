@@ -57,8 +57,8 @@ class _TodayReportChittagongState extends State<TodayReportChittagong> {
                   vehicleName: vehicle.vehicleName.toString(),
                   vehicleImage: vehicle.image.toString(),
                   secondRowTitle: "Overload",
-                  regular: (int.parse(vehicle.regular) -
-                      int.parse(vehicle.notOverload) -
+                  regular:
+                  (int.parse(vehicle.regular) - int.parse(vehicle.notOverload) -
                       int.parse(vehicle.ctrlR))
                       .toString(),
                   triadRowTitle: "Not Overloaded",

@@ -703,7 +703,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
   }*/
 
   void snackBarMsg(errorMessage) {
-    //print("ok");
     final snackBar = SnackBar(
       content: Text(
         errorMessage.toString(),
@@ -716,7 +715,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
         },
       ),
     );
-
     _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 }

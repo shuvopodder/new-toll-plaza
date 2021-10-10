@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:toll_plaza/DatabaseModule/Chittagong/chittagongTodyDataModule.dart';
 import 'package:toll_plaza/DatabaseModule/Chittagong/previousChittagongData.dart';
@@ -22,8 +21,7 @@ class _ChittagongReportPageState extends State<ChittagongReportPage> {
       await context.read<TodayReportChittagongDatabase>().getReport();
       await context.read<PreviousReportChittagongDatabase>().getPreviousReport();
 
-      //print(context.read<TodayReportCharsindurDataModule>().totalYesterdayVehicle.toString());
-      setState(() {
+       setState(() {
         isLoading = false;
       });
     } catch (e) {}
@@ -31,13 +29,14 @@ class _ChittagongReportPageState extends State<ChittagongReportPage> {
   @override
   void initState() {
     // TODO: implement initState
-    getData();//test
+
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) => {
+    getData();//test
+    /*Future.delayed(Duration(seconds: 1)).then((value) => {
           setState(() {
             isLoading = false;
           })
-        });
+        });*/
   }
 
   @override
@@ -45,10 +44,6 @@ class _ChittagongReportPageState extends State<ChittagongReportPage> {
     final providerThemeAndColor = Provider.of<ThemeAndColorProvider>(context);
     return isLoading
         ? Container(
-      /*color: providerThemeAndColor.backgroundColor,
-            child: Center(
-              child: Lottie.asset('assets/json/loading.json'),
-            ),*/
       color: Colors.white,
       child: Center(
         child:ColorLoader(),

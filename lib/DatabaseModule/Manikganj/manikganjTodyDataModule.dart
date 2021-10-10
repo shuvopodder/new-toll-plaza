@@ -6,7 +6,7 @@ import
 'package:intl/intl.dart';
 import 'package:toll_plaza/DatabaseModule/Manikganj/winVehicleReportModule.dart';
 
-class TodayReportManikganjDatabase with ChangeNotifier {
+class TodayReportManikganjDatabase extends ChangeNotifier {
   var axel2;
   var axel3;
   var axel4;

@@ -69,3 +69,4 @@ class CtrlReportModel {
     return data;
   }
 }
+

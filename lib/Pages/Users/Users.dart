@@ -73,8 +73,6 @@ class _UsersState extends State<Users> {
                 Tab(text: "Teesta"),
                 Tab(text: "Mohanonda"),
                 Tab(text: "Admin"),
-                //  Tab(text: "GRAPH"),
-                // Tab(text: "VIP PASS"),
               ],
             ),
           ),
@@ -83,8 +81,6 @@ class _UsersState extends State<Users> {
               TeestaUsers(),
               MohanondaUsers(),
               AdminUsers(),
-              // GraphTeesta(),
-              //VipPassTeesta(),
             ],
           ),
           floatingActionButton: FloatingActionButton(

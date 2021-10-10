@@ -37,7 +37,6 @@ class _sevenDaysDataTeestaState extends State<sevenDaysDataTeesta> {
               ? FadeIn(
             //for animation
             duration: Duration(milliseconds: 1000),
-            //fow showing each value of list
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Container(
